@@ -7,4 +7,4 @@
 
 *lpe* is based on the tool [out-of-tree](https://out-of-tree.io/) ([documentation](https://out-of-tree.readthedocs.io/)) and allows collaborative work on Linux kernel exploits without too much complexity.
 
-The end goal is to collect all public exploits that **actually works**.
+The end goal is to collect all public exploits that **actually work**.
