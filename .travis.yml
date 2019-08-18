@@ -1,0 +1,29 @@
+language: generic
+
+os:
+  - linux
+
+dist:
+  - bionic
+
+addons:
+  apt:
+    packages:
+    - qemu
+  snaps:
+    - name: go
+      confinement: classic
+
+services:
+  - docker
+
+env:
+  - GO111MODULE=on
+
+before_script:
+  - go get -u code.dumpstack.io/tools/out-of-tree
+  - sudo ln -s $HOME/.out-of-tree /root/
+  - out-of-tree bootstrap
+
+script:
+  - sudo $(which out-of-tree) pack --autogen
