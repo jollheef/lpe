@@ -18,18 +18,20 @@ services:
   - docker
 
 env:
-  - GO111MODULE=on
+  global:
+    - GO111MODULE=on
+  matrix:
+    - EXPLOIT=CVE-2017-16995
 
 before_script:
   - go get -u code.dumpstack.io/tools/out-of-tree
   - sudo ln -s $HOME/.out-of-tree /root/
   - out-of-tree bootstrap
+  - |
+    cd $TRAVIS_BUILD_DIR/$EXPLOIT
+    out-of-tree kernel autogen --max=8
 
 script:
-  - sudo $(which out-of-tree) pack --autogen
   - |
-    out-of-tree log query | grep FAILURE | while read line; do
-        ID=$(echo $line | grep -o '[0-9]\+' | head -n 1)
-        out-of-tree log dump $ID | tr -cd '\11\12\15\40-\176'
-    done
-  - out-of-tree log query
+    cd $TRAVIS_BUILD_DIR/$EXPLOIT
+    sudo $(which out-of-tree) pew --max=8
