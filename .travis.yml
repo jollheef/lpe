@@ -22,6 +22,7 @@ env:
     - GO111MODULE=on
   matrix:
     - EXPLOIT=CVE-2017-16995
+    - EXPLOIT=CVE-2016-5195
 
 before_script:
   - go get -u code.dumpstack.io/tools/out-of-tree
