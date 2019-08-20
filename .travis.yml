@@ -28,7 +28,6 @@ env:
 before_script:
   - go get -u code.dumpstack.io/tools/out-of-tree
   - sudo ln -s $HOME/.out-of-tree /root/
-  - out-of-tree bootstrap
   - |
     cd $TRAVIS_BUILD_DIR/$EXPLOIT
     out-of-tree kernel autogen --max=8
