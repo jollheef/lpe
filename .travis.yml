@@ -36,4 +36,4 @@ before_script:
 script:
   - |
     cd $TRAVIS_BUILD_DIR/$EXPLOIT
-    sudo $(which out-of-tree) pew --max=8
+    sudo $(which out-of-tree) pew --runs=3 --timeout=20m --threshold=0.95
