@@ -4,7 +4,7 @@
 
 # lpe
 
-*lpe* is the collection of verified Linux kernel exploits.
+*lpe* is a collection of verified Linux kernel exploits.
 
 *lpe* is based on the tool [out-of-tree](https://out-of-tree.io/) ([documentation](https://out-of-tree.readthedocs.io/)) and allows collaborative work on Linux kernel exploits without too much complexity.
 
