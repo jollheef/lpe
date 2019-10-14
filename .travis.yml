@@ -1,4 +1,7 @@
-language: generic
+language: go
+
+go:
+  - 1.x
 
 os:
   - linux
@@ -10,9 +13,6 @@ addons:
   apt:
     packages:
     - qemu
-  snaps:
-    - name: go
-      confinement: classic
 
 services:
   - docker
