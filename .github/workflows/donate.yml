@@ -11,10 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - env:
+          # https://github.com/jollheef/donate/blob/master/dashboard/whitelist.go
+          DASHBOARD_ACCESS_TOKEN: ${{ secrets.DONATE_DASHBOARD_ACCESS_TOKEN }}
+          # the scope is current repository only
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # the scope is current repository only
           TOOL: "https://github.com/jollheef/donate/archive/master.tar.gz"
         run: |
           curl https://nixos.org/nix/install | sh
           . ~/.nix-profile/etc/profile.d/nix.sh
+          # Use latest stable nixpkgs channel
+          nix-channel --add https://nixos.org/channels/nixos-19.09 nixpkgs
           nix-channel --update
           nix run -f $TOOL -c donate-ci
